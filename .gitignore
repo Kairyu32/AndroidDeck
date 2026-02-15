@@ -1,0 +1,19 @@
+# Python Stuff
+__pycache__/
+*.py[cod]
+appserver/
+build/
+dist/
+*.spec
+
+# Android Stuff
+.gradle/
+local.properties
+.idea/
+*.iml
+build/
+app/build/
+
+# Binaries
+*.apk
+*.exe
