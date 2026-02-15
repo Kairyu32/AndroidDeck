@@ -5,6 +5,7 @@ import win32com.client
 import threading
 import pystray
 import sys
+import pythoncom
 from PIL import Image, ImageDraw
 
 # --- CONFIGURATION ---
@@ -40,6 +41,7 @@ def get_installed_apps():
     return apps
 
 def handle_client(conn, addr):
+    pythoncom.CoInitialize()
     print(f"Connected by {addr}")
     try:
         data = conn.recv(1024).decode()
@@ -63,6 +65,7 @@ def handle_client(conn, addr):
     except Exception as e:
         print(f"Error: {e}")
     finally:
+        pythoncom.CoUninitialize()
         conn.close()
 
 def start_server(icon):
